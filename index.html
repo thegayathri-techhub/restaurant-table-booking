@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="bookingApp">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Restaurant Booking</title>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- EmailJS -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+    <style>
+      body {
+        scroll-behavior: smooth;
+        padding-top: 70px;
+      }
+      section {
+        padding: 60px 0;
+      }
+      .navbar {
+        margin-bottom: 20px;
+      }
+      .form-control {
+        margin-bottom: 15px;
+      }
+      img.hero-img {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+        object-fit: cover;
+        margin-bottom: 20px;
+      }
+      .hero-section {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80");
+        background-size: cover;
+        background-position: center;
+        height: 80vh;
+        display: flex;
+        align-items: center;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <span class="text-warning">Gourmet</span> Delight
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#menu">Menu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
+            <li class="nav-item ms-lg-3">
+              <a class="btn btn-outline-warning" href="#book">Reservations</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Home -->
+    <section id="home" class="text-center bg-light">
+      <div class="container">
+        <h1 class="display-4">Welcome to Our Restaurant</h1>
+        <p class="lead">Delicious food and unforgettable experience.</p>
+      </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container text-center">
+        <h1 class="display-3 fw-bold mb-4">
+          Where every ingredient tells a story.
+        </h1>
+        <p class="lead mb-5">
+          The first bite will blow your mind. The second will transport you to
+          another dimension
+        </p>
+        <a href="#book" class="btn btn-warning btn-lg px-4 py-2"
+          >Book a Table</a
+        >
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-5" style="background: #fff8f0">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="display-5 fw-bold text-dark">About Us</h2>
+          <p class="lead text-secondary">
+            Crafting experiences through food since 1995
+          </p>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+          <div class="col-lg-10">
+            <p class="fs-5 text-dark">
+              Founded in <span class="text-warning fw-semibold">1995</span>,
+              <strong>Gourmet Delight</strong> has delighted food lovers for
+              over 25 years with exceptional dishes made from the freshest local
+              ingredients.
+            </p>
+            <p class="fs-5 text-dark">
+              Our founder, <strong>Chef Michael Johnson</strong>, believed
+              dining should be more than a meal—it should be a memory. His
+              vision created a place where culinary art meets community warmth.
+            </p>
+            <p class="fs-5 text-dark">
+              Every dish is crafted with love, plated with care, and served with
+              pride. Join us for a dining experience you’ll never forget.
+            </p>
+          </div>
+        </div>
+
+        <div class="row g-3 justify-content-center">
+          <div class="col-md-4">
+            <img
+              src="https://images.unsplash.com/photo-1528605248644-14dd04022da1"
+              alt="Chef at work"
+              class="img-fluid rounded shadow"
+            />
+          </div>
+          <div class="col-md-4">
+            <img
+              src="https://images.unsplash.com/photo-1504674900247-0877df9cc836"
+              alt="Dining Area"
+              class="img-fluid rounded shadow"
+            />
+          </div>
+          <div class="col-md-4">
+            <img
+              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4"
+              alt="Team"
+              class="img-fluid rounded shadow"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section id="menu" class="py-5" style="background: #fefefe">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="display-5 fw-bold text-dark">Our Menu</h2>
+          <p class="lead text-secondary">Pizza, Pasta, Burgers, and More!</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+              <img
+                src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092"
+                alt="Pepperoni Pizza"
+                class="card-img-top rounded-top"
+              />
+              <div class="card-body text-start">
+                <h5 class="card-title text-dark">Classic Pepperoni Pizza</h5>
+                <p class="card-text text-muted">
+                  Crispy thin crust topped with spicy pepperoni, mozzarella, and
+                  house tomato sauce.
+                </p>
+                <p class="fw-bold text-warning">$12.99</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+              <img
+                src="https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/content9555.jpg"
+                alt="Creamy Alfredo Pasta"
+                class="card-img-top rounded-top"
+              />
+              <div class="card-body text-start">
+                <h5 class="card-title text-dark">Creamy Alfredo Pasta</h5>
+                <p class="card-text text-muted">
+                  Rich Alfredo sauce over fettuccine, finished with parmesan and
+                  grilled chicken.
+                </p>
+                <p class="fw-bold text-warning">$11.50</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card h-100 shadow-sm border-0">
+              <img
+                src="https://static.ffx.io/images/$zoom_1%2C$multiply_0.3214%2C$ratio_1.777778%2C$width_1929%2C$x_11%2C$y_151/t_crop_custom/q_86%2Cf_auto/eb170c6db39dc1dec239ff14f87cb72abfcef51b"
+              />
+              <div class="card-body text-start">
+                <h5 class="card-title text-dark">Gourmet Beef Burger</h5>
+                <p class="card-text text-muted">
+                  Juicy Angus beef patty, cheddar, lettuce, tomato, and
+                  signature sauce on a brioche bun.
+                </p>
+                <p class="fw-bold text-warning">$10.25</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-5" style="background-color: #f8f9fa">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="display-5 fw-bold text-dark">Gallery</h2>
+          <p class="lead text-muted">
+            Take a look inside our restaurant and kitchen.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+              <img
+                src="data:image/webp;base64,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"
+                class="card-img-top rounded"
+                alt="Dining Area"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+              <img
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5"
+                class="card-img-top rounded"
+                alt="Chef in Kitchen"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+              <img
+                src="https://th.bing.com/th/id/OIP.FtudhIBH-HYhxMpS4TU-sAHaE8?w=259&h=186&c=7&r=0&o=7&cb=iwp1&dpr=1.3&pid=1.7&rm=3"
+                class="card-img-top rounded"
+                alt="Plated Dish"
+              />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card border-0 shadow-sm">
+              <img
+                src="https://th.bing.com/th/id/OIP.MO6T-LKR9oi03dJSe9DMGgHaE8?w=293&h=195&c=7&r=0&o=7&cb=iwp1&dpr=1.3&pid=1.7&rm=3"
+                class="card-img-top rounded"
+                alt="Restaurant Interior"
+              />
+            </div>
+          </div>
+        </div>
+        <!--reviews-->
+        <div class="mt-5">
+          <h4 class="text-center fw-bold mb-4 text-dark">
+            What Our Customers Say
+          </h4>
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="card p-3 border-0 shadow-sm h-100 bg-white">
+                <p class="fst-italic text-muted">
+                  "A delightful experience! The food was incredible and the
+                  staff was warm and welcoming."
+                </p>
+                <p class="fw-bold mb-0 text-dark">– Sindhu.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card p-3 border-0 shadow-sm h-100 bg-white">
+                <p class="fst-italic text-muted">
+                  "The ambiance is charming and the pizza is the best I've had
+                  in the city."
+                </p>
+                <p class="fw-bold mb-0 text-dark">– Gayathri.</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card p-3 border-0 shadow-sm h-100 bg-white">
+                <p class="fst-italic text-muted">
+                  "Highly recommend! Every dish we tried was fresh, flavorful,
+                  and beautifully presented."
+                </p>
+                <p class="fw-bold mb-0 text-dark">– Shreya.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Book a Table -->
+    <section
+      id="book"
+      class="bg-white text-center"
+      ng-app="bookingApp"
+      ng-controller="BookingController"
+    >
+      <div class="container">
+        <h2>Book a Table</h2>
+        <form ng-submit="bookTable()" class="col-md-6 offset-md-3">
+          <input
+            type="text"
+            class="form-control"
+            ng-model="formData.name"
+            placeholder="Your Name"
+            required
+          />
+          <input
+            type="email"
+            class="form-control"
+            ng-model="formData.email"
+            placeholder="Your Email"
+            required
+          />
+          <input
+            type="text"
+            class="form-control"
+            ng-model="formData.phone"
+            placeholder="Phone Number"
+            required
+          />
+          <input
+            type="date"
+            class="form-control"
+            ng-model="formData.date"
+            required
+          />
+          <input
+            type="time"
+            class="form-control"
+            ng-model="formData.time"
+            required
+          />
+          <input
+            type="number"
+            class="form-control"
+            ng-model="formData.guests"
+            placeholder="No. of Guests"
+            required
+          />
+          <button type="submit" class="btn btn-primary w-100">Book Now</button>
+        </form>
+        <p class="text-success mt-3" ng-if="successMsg">{{ successMsg }}</p>
+      </div>
+    </section>
+    <!-- AngularJS + EmailJS Integration -->
+    <script>
+      (function () {
+        emailjs.init("1l8zquOCqkG83twgF"); // ✅ Your EmailJS public key
+      })();
+
+      angular
+        .module("bookingApp", [])
+        .controller("BookingController", function ($scope) {
+          $scope.formData = {};
+          $scope.successMsg = "";
+
+          $scope.bookTable = function () {
+            const templateParams = {
+              name: $scope.formData.name,
+              email: $scope.formData.email,
+              phone: $scope.formData.phone,
+              date: $scope.formData.date,
+              time: $scope.formData.time,
+              guests: $scope.formData.guests,
+            };
+
+            emailjs
+              .send("service_bqxokja", "template_sb53zmn", templateParams)
+              .then(
+                function (response) {
+                  $scope.successMsg = "✅ Booking confirmed! Check your email.";
+                  $scope.formData = {};
+                  $scope.$apply();
+                },
+                function (error) {
+                  console.error("EmailJS Error:", error);
+                  $scope.successMsg = "❌ Booking failed. Please try again.";
+                  $scope.$apply();
+                }
+              );
+          };
+        });
+    </script>
+
+    <!-- Contact Section -->
+    <section
+      id="contact"
+      class="py-5 bg-light"
+      ng-controller="ContactController"
+      style="background-color: #0a111f"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="text-center mb-5">
+              <h2 class="fw-bold">Contact Us</h2>
+              <p class="lead text-muted">We'd love to hear from you</p>
+            </div>
+
+            <div class="contact-info mb-4">
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-geo-alt-fill"></i>
+                <p class="mb-0">123 Gourmet Street, Foodville, NY 10001</p>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-telephone-fill"></i>
+                <p class="mb-0">(555) 123-4567</p>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-envelope-fill"></i>
+                <p class="mb-0">info@gourmetdelight.com</p>
+              </div>
+              <div class="d-flex align-items-center mb-3">
+                <i class="bi bi-clock-fill"></i>
+                <p class="mb-0">
+                  Mon-Fri: 11:00 AM - 10:00 PM<br />Sat-Sun: 10:00 AM - 11:00 PM
+                </p>
+              </div>
+            </div>
+
+            <div class="map-container">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.215573291234!2d-73.9878449240401!3d40.74844097138992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c259a9b3117469%3A0xd134e199a405a163!2sEmpire%20State%20Building!5e0!3m2!1sen!2sus!4v1689876423586!5m2!1sen!2sus"
+                width="100%"
+                height="300"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="text-center mb-5">
+              <h2 class="fw-bold">Send Us a Message</h2>
+              <p class="lead text-muted">
+                Have questions or feedback? Reach out to us.
+              </p>
+            </div>
+
+            <form name="contactForm" ng-submit="submitContact()" novalidate>
+              <div class="mb-3">
+                <label for="contactName" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contactName"
+                  ng-model="contact.name"
+                  required
+                />
+                <div
+                  class="error-message"
+                  ng-show="contactForm.contactName.$touched && contactForm.contactName.$invalid"
+                >
+                  Please enter your name
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="contactEmail" class="form-label">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="contactEmail"
+                  ng-model="contact.email"
+                  required
+                />
+                <div
+                  class="error-message"
+                  ng-show="contactForm.contactEmail.$touched && contactForm.contactEmail.$invalid"
+                >
+                  Please enter a valid email
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="contactSubject" class="form-label">Subject</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="contactSubject"
+                  ng-model="contact.subject"
+                  required
+                />
+                <div
+                  class="error-message"
+                  ng-show="contactForm.contactSubject.$touched && contactForm.contactSubject.$invalid"
+                >
+                  Please enter a subject
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="contactMessage" class="form-label">Message</label>
+                <textarea
+                  class="form-control"
+                  id="contactMessage"
+                  rows="5"
+                  ng-model="contact.message"
+                  required
+                ></textarea>
+                <div
+                  class="error-message"
+                  ng-show="contactForm.contactMessage.$touched && contactForm.contactMessage.$invalid"
+                >
+                  Please enter your message
+                </div>
+              </div>
+              <div class="text-center">
+                <button
+                  type="submit"
+                  class="btn btn-warning px-4 py-2"
+                  ng-disabled="contactForm.$invalid"
+                >
+                  Send Message
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="py-5" style="background-color: #000">
+      <div class="container text-white">
+        <div class="row">
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h5 class="text-warning mb-4">Gourmet Delight</h5>
+            <p>
+              Experience the finest dining in the city with our carefully
+              crafted menu and exceptional service.
+            </p>
+          </div>
+          <div class="col-md-4 mb-4 mb-md-0">
+            <h5 class="text-warning mb-4">Quick Links</h5>
+            <ul class="list-unstyled">
+              <li class="mb-2">
+                <a href="#" class="text-white text-decoration-none">Home</a>
+              </li>
+              <li class="mb-2">
+                <a href="#about" class="text-white text-decoration-none"
+                  >About Us</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#menu" class="text-white text-decoration-none">Menu</a>
+              </li>
+              <li class="mb-2">
+                <a href="#gallery" class="text-white text-decoration-none"
+                  >Gallery</a
+                >
+              </li>
+              <li class="mb-2">
+                <a href="#contact" class="text-white text-decoration-none"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h5 class="text-warning mb-4">Connect With Us</h5>
+            <div class="social-links mb-3">
+              <a href="#" class="text-white me-3 fs-5"
+                ><i class="bi bi-facebook"></i
+              ></a>
+              <a href="#" class="text-white me-3 fs-5"
+                ><i class="bi bi-instagram"></i
+              ></a>
+              <a href="#" class="text-white me-3 fs-5"
+                ><i class="bi bi-twitter"></i
+              ></a>
+              <a href="#" class="text-white fs-5"
+                ><i class="bi bi-youtube"></i
+              ></a>
+            </div>
+            <p>Subscribe to our newsletter</p>
+            <div class="input-group">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Your email"
+              />
+              <button class="btn btn-warning" type="button">Subscribe</button>
+            </div>
+          </div>
+        </div>
+        <hr class="my-4 bg-light" />
+        <div class="text-center">
+          <p class="mb-0 text-white">
+            &copy; 2023 Gourmet Delight. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
